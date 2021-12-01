@@ -1,0 +1,42 @@
+{% extends "layout.html"%}
+
+{%block kategori%} 
+<div class="col-md-4" style="margin-top: 10%;"></div>
+<div class="col-md-4" style="margin-left: 35%;">
+    <form method="POST" action="/login_adm">
+        {{form.hidden_tag()}}
+        <div class="form-group">
+            {{form.email.label(class="form-control-label")}}
+            {%if form.email.errors%}
+                {{form.email(class="form-control is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.email(class="form-control")}}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{form.password.label(class="form-control-label")}}
+            {%if form.password.errors%}
+                {{form.password(class="form-control is-invalid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.password(class="form-control")}}
+            {% endif %}
+        </div>
+    
+        {{form.submit(class="btn btn-warning")}}
+        
+    </form>
+</div>
+<div class="col-md-4"></div>
+
+{%endblock kategori%} 

@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block kategori %}
+<div class="container">
+    <h2 style="text-align: center;">{{bca.judul}}</h2>
+    <h4>{{bca.ar.nama | safe }}</h4>
+    <p>{{bca.konten}}</p>
+</div>
+{% endblock kategori %}

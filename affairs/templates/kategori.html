@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{%block kategori%}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/post">Sample Post</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{current_user.username}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">               
+                <a class="dropdown-item" href="{{url_for('admingam.tambah_kat')}}">Tambah Kategori</a> 
+                <a class="dropdown-item" href="{{url_for('admingam.tambah_artikel')}}">Tambah artikel</a>
+                <a class="dropdown-item" href="{{url_for('admingam.admin')}}">Laman daftar</a>
+                <a class="dropdown-item" href="{{url_for('admingam.logout_adm')}}">Logout</a>              
+            </div>
+        </li>
+          
+        </ul>
+      </div>
+    </div>
+</nav>
+<div class="col-md-2" style="margin-top:10%"></div>
+<div class="col-md-8 mt-5">
+    <div class="container">
+        <h2 class="text-center">tambah kategori</h2>
+        <form action="/tambahkat" method="post">
+            {{form.hidden_tag()}}
+            <div class="form-group">
+                
+                {%if form.nama_kat.errors%}
+                    {{form.nama_kat(class="form-control is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.nama_kat.errors %}
+                        <span>{{error}}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{form.nama_kat(class="form-control")}}
+                {% endif %}
+            </div>
+            {{form.submit(class="btn btn-sm btn-primary")}}
+        </form>
+    </div>
+    </div>
+</div>
+<div class="col-md-2"></div>
+{%endblock kategori%} 

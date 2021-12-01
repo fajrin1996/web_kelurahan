@@ -1,0 +1,14 @@
+{% extends'layout.html' %}
+
+{% block content %}
+{% for r in rek%}
+<div class="card">
+  <div class="card-body">
+    <a href="{{url_for('admingam.lihatrek', id=r.id)}}">
+      Laporan rekening air bulan {{r.tgl_pst.strftime('%b, %Y')}}
+    </a>
+  </div>
+</div>
+<hr />
+{% endfor %}
+{% endblock content  %}
