@@ -10,7 +10,7 @@ import datetime
 from flask_sqlalchemy import SQLAlchemy
 from flask_ckeditor import CKEditor
  
-app = Flask("__name__", template_folder='templates', static_folder='static')
+app = Flask("__name__", template_folder='affairs/templates', static_folder='affairs/static')
 app.config['SECRET_KEY'] = "affairs"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///kelurahan.db'
 
