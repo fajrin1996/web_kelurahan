@@ -1,7 +1,9 @@
 {% extends 'layout.html'%}
 {%block content %}
-{% for df in daf_ar %}
-      <div class="card w-75 ">
+<div class="row text-center"></div>
+{% for df in daf_ar.items %}
+  
+      <div class="card w-75 text-center">
         <div class="card-body">
           <h5 class="card-title">{{df.judul}}</h5>
           <hr>
@@ -10,6 +12,30 @@
         </div>
         <p class="text-muted ml-5">{{df.tgl_post.strftime('%B %d, %Y')}}</p>
       </div>
-      <br><br>
-{% endfor %}
+      <br>
+  {% endfor %}
+  </div>  
+      <hr>
+      <div class="row">
+        <div class="col text-center p-2">
+          {% if daf_ar.has_prev %}
+          <a href="{{url_for('admingam.home', page=daf_ar.prev_num)}}" class="btn btn-info btn-sm mt-3">previous</a>
+          {% endif %}
+          {% for page_num in daf_ar.iter_pages() %}
+          {% if page_num %}
+          {% if daf_ar.page == page_num %}
+          <a href="{{url_for('admingam.home', page=page_num)}}" class="btn btn-info btn-sm mt-3">{{page_num}}</a>
+          {% else %}
+          <a href="{{url_for('admingam.home', page=page_num)}}" class="btn btn-outline-info btn-sm mt-3">{{page_num}}</a>
+          {% endif %}
+          {% else %}
+          ... 
+          {% endif %}
+          {% endfor %}
+
+          {% if daf_ar.has_next %}
+          <a href="{{url_for('admingam.home', page=daf_ar.next_num)}}" class="btn btn-info btn-sm mt-3">next</a>
+          {% endif %}
+        </div>
+      </div>
 {%endblock content %}

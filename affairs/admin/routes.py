@@ -35,8 +35,8 @@ def savecsv(file_csv):
 
 @admingam.route("/")
 def home():
-    # halaman = request.args.get('halaman', 1, type=int)
-    daf_ar = Artikel.query.all() #paginate(page=halaman, per_page=3)
+    halaman = request.args.get('page',1, type=int)
+    daf_ar = Artikel.query.order_by(Artikel.id.desc()).paginate(page=halaman, per_page=3)
     return render_template("index.html", daf_ar=daf_ar)
 
 @admingam.route('/baca_ar/<int:id>')
