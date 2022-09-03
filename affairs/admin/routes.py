@@ -58,7 +58,7 @@ def post():
 #risno456
 @admingam.route("/admin", methods=["GET","POST"])
 def admin():
-    form = Admin()
+    form = Admin() 
     if form.validate_on_submit():
         hash_password = bcrypt.generate_password_hash(form.password.data)
         kelu = admindb(username=form.username.data, email=form.email.data, password=hash_password)
