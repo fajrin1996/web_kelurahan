@@ -12,7 +12,6 @@ from flask_ckeditor import CKEditor
 app = Flask("__name__", template_folder='affairs/Templates', static_folder='affairs/static')
 app.config['SECRET_KEY'] = "affairs"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///kelurahan.db'
-
 ckeditor = CKEditor(app)
 app.config['CKEDITOR_HEIGHT'] = 400
 db = SQLAlchemy(app)

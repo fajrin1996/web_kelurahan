@@ -1,9 +1,10 @@
 {% extends 'layout.html' %}
 
-{% block kategori %}
+{% block content %}
 <div class="container">
     <h2 style="text-align: center;">{{bca.judul}}</h2>
+    <img src="my image">
     <h4>{{bca.ar.nama | safe }}</h4>
     <p>{{bca.konten}}</p>
 </div>
-{% endblock kategori %}
+{% endblock content %}
