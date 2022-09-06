@@ -85,7 +85,7 @@ def logout_adm():
     return redirect(url_for('admingam.home'))
 
 @admingam.route("/tambahkat", methods=["GET","POST"])
-@login_required
+# @login_required
 def tambah_kat():
     form = KategoriF()
     if form.validate_on_submit():
@@ -96,7 +96,7 @@ def tambah_kat():
     return render_template("kategori.html", form=form)
     
 @admingam.route("/tambah_artikel", methods=["GET","POST"])
-@login_required
+# @login_required
 def tambah_artikel():
   form=ArtikelP()
   form.kategori_id.choices = [(str(kategori_id.id), kategori_id.nama) for kategori_id in Kategori.query.all()]
@@ -114,7 +114,7 @@ def tambah_artikel():
   return render_template("Artikel.html",form=form, title='Tambah Berita')
 
 @admingam.route('/admin_panel')
-@login_required
+# @login_required
 def admin_panel():
     artl = Artikel.query.all()
     return render_template('admin_panel.html', artl=artl, title='Admin Panel')
@@ -141,7 +141,7 @@ def edit_artikel(id):
     return render_template("edit_artikel.html", form=form, title='Edit Berita')
 
 @admingam.route("/hapus_ar/<int:id>",  methods=["POST"])
-@login_required
+# @login_required
 def hapus_ar(id):
     art = Artikel.query.get_or_404(id)
     if request.method == "POST":
@@ -151,14 +151,14 @@ def hapus_ar(id):
     return redirect(url_for('admingam.admin_panel'))
 
 @admingam.route('/csvupload', methods=["GET","POST"])
-@login_required
+# @login_required
 def csvupload():
     return render_template('upload_csv.html')
 
 
 
 @admingam.route("/displaycsv",  methods=["GET","POST"])
-@login_required
+# @login_required
 def displaycsv():
     data = []
     form = UploadCSv()
@@ -176,7 +176,7 @@ def lamanrek():
     return render_template('lamanrek.html', rek=rek,title='Daftar Rekening Bulanan')
             
 @admingam.route('/hapusrek/<int:id>')
-@login_required
+# @login_required
 def hapusrek(id):
     hps = CustomerPgAir.query.get_or_404(id)
     db.session.delete(hps)
