@@ -56,12 +56,12 @@ def contact():
 def post():
     return render_template("post.html")
 #risno456
-@admingam.route("/admin", methods=["GET","POST"])
+
+@admingam.route("/admin-daftar-akun", methods=["GET","POST"])
 def admin():
-    form = Admin() 
+    form = Admin()
     if form.validate_on_submit():
-        hash_password = bcrypt.generate_password_hash(form.password.data)
-        kelu = admindb(username=form.username.data, email=form.email.data, password=hash_password)
+        kelu = admindb(username=form.username.data, email=form.email.data, password=form.password.data)
         db.session.add(kelu)
         db.session.commit()
         return redirect(url_for("admingam.home"))
@@ -72,7 +72,7 @@ def login_adm():
     form=LoginA()
     if form.validate_on_submit():
         cekmail = admindb.query.filter_by(email=form.email.data).first()
-        if cekmail and bcrypt.check_password_hash(cekmail.password, form.password.data):
+        if cekmail and (cekmail.password, form.password.data):
             login_user(cekmail)
             return redirect(url_for("admingam.admin_panel"))
         else:
