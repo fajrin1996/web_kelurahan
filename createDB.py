@@ -1,2 +1,2 @@
-from affairs import dan
+from affairs import db
 db.create_all()
