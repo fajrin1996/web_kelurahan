@@ -18,14 +18,12 @@ dominate==2.6.0
 filelock==3.0.12
 Flask==1.1.1
 Flask-Bcrypt==0.7.1
-Flask-Bootstrap==3.3.7.1
 Flask-CKEditor==0.4.4.1
 Flask-Login==0.4.1
 Flask-Migrate==2.5.3
 flask-msearch==0.2.9.2
 Flask-Script==2.0.6
 Flask-Session==0.3.2
-Flask-SocketIO==5.1.0
 Flask-SQLAlchemy==2.4.1
 Flask-Uploads==0.2.1
 Flask-WTF==0.14.2
@@ -47,6 +45,7 @@ packaging==21.3
 pdfkit==0.6.1
 Pillow==8.0.1
 pipenv==2020.11.15
+psycopg2==2.9.3
 pycparser==2.20
 pylint==2.7.0
 PyMySQL==1.0.2
