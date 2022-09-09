@@ -17,10 +17,10 @@
         {% for i in r.csv_field  %}
        <tr>
            <td>{{i['PassengerId']}}</td>
-           <td>{{i['Survived']}}</td>
-           <td>{{i['Pclass']}}</td>
-           <td>{{i['Name']|truncate(20)}}</td>
-           <td>{{i['Sex']}}</td>
+           <td>{{i['Nama']}}</td>
+           <td>{{i['Rt']}}</td>
+           <td>{{i['Harga']|truncate(20)}}</td>
+           <td>{{i['Keterangan']}}</td>
        </tr>
        {% endfor %}
     </tbody>
