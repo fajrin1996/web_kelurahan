@@ -16,7 +16,7 @@
     <tbody>
         {% for i in r.csv_field  %}
        <tr>
-           <td>{{i['PassengerId']}}</td>
+           <td>{{loop.index}}</td>
            <td>{{i['Nama']}}</td>
            <td>{{i['Rt']}}</td>
            <td>{{i['Harga']|truncate(20)}}</td>
