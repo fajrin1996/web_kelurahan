@@ -92,7 +92,7 @@ def tambah_kat():
         nama = Kategori(nama=form.nama_kat.data)
         db.session.add(nama)
         db.session.commit()
-        return redirect(url_for("admingam.admin"))
+        return redirect(url_for("admingam.admin_panel"))
     return render_template("kategori.html", form=form)
     
 @admingam.route("/tambah_artikel", methods=["GET","POST"])
