@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for a in Air %}
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body"></div>
+                <h5 class="card-title"> Laporan Air bulan{{a.tgl_pst.strftime('%b, %Y')}}</h5>
+                <p class="card-text"></p>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{a.id}}">
+                      H
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal-{{a.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{r.tgl_pst.strftime('%b, %Y')}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <span class="text-danger"> ingin menghapus laporan rekening Air {{r.tgl_pst.strftime('%b, %Y')}}</span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                <form action="{{url_for('admingam.hapus_air', id=a.id)}}" method="POST">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>  
+    <hr>
+      <div class="row">
+        <div class="col text-center p-2">
+          {% if Air.has_prev %}
+          <a href="{{url_for('admingam.home', page=Air.prev_num)}}" class="btn btn-info btn-sm mt-3">previous</a>
+          {% endif %}
+          {% for page_num in Air.iter_pages() %}
+          {% if page_num %}
+          {% if Air.page == page_num %}
+          <a href="{{url_for('admingam.home', page=page_num)}}" class="btn btn-info btn-sm mt-3">{{page_num}}</a>
+          {% else %}
+          <a href="{{url_for('admingam.home', page=page_num)}}" class="btn btn-outline-info btn-sm mt-3">{{page_num}}</a>
+          {% endif %}
+          {% else %}
+          ... 
+          {% endif %}
+          {% endfor %}
+
+          {% if Air.has_next %}
+          <a href="{{url_for('admingam.home', page=Air.next_num)}}" class="btn btn-info btn-sm mt-3">next</a>
+          {% endif %}
+        </div>
+      </div>  
+</div>
+{% endblock content%}

@@ -21,7 +21,7 @@
           <ul class="navbar-nav">
               {% if current_user.is_authenticated %}
             <li class="nav-item active">
-              <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{url_for('admingam.home')}}">Home <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item dropdown">
@@ -30,14 +30,16 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="{{url_for('admingam.tambah_kat')}}">Tambah Kategori</a>
-                <a class="dropdown-item" href="{{url_for('admingam.tambah_artikel')}}">Tambah artikel</a>
+                <a class="dropdown-item" href="{{url_for('admingam.tambah_artikel')}}">Tambah Berita atau Pengumuman</a>
                 <a class="dropdown-item" href="{{url_for('admingam.admin_panel')}}">Admin Panel</a>
+                <a class="dropdown-item" href="{{url_for('admingam.csvupload')}}">Panel Laporan Air</a>
+                <a class="dropdown-item" href="{{url_for('admingam.displaycsv')}}">Upload Rekening Air</a>
                 <a class="dropdown-item" href="{{url_for('admingam.logout_adm')}}">Logout</a>
               </div>
             </li>
             {%else %}
             <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link" href="{{url_for('admingam.home')}}">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{url_for('admingam.login_adm')}}">Login</a>
@@ -46,7 +48,7 @@
               <a class="nav-link" href="{{url_for('admingam.lamanrek')}}">Pengumuman Air</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="{{url_for('admingam.about')}}">About</a>
             </li>
             {% endif %}
           </ul>
