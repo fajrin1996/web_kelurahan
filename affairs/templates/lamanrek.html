@@ -1,14 +1,38 @@
 {% extends'layout.html' %}
 
 {% block content %}
-{% for r in rek%}
-<div class="card">
-  <div class="card-body">
-    <a href="{{url_for('admingam.lihatrek', id=r.id)}}">
-      Laporan rekening air bulan {{r.tgl_pst.strftime('%b, %Y')}}
-    </a>
+{% for r in rek.items %}
+<div class="row">
+  <div class="card">
+    <div class="card-body">
+      <a href="{{url_for('admingam.lihatrek', id=r.id)}}">
+        Laporan rekening air bulan {{r.tgl_pst.strftime('%b, %Y')}}
+      </a>
+    </div>
   </div>
 </div>
-<hr />
 {% endfor %}
+<hr />
+<div class="row">
+  <div class="col text-center p-2">
+    {% if rek.has_prev %}
+    <a href="{{url_for('admingam.lamanrek', page=rek.prev_num)}}" class="btn btn-info btn-sm mt-3">previous</a>
+    {% endif %}
+    {% for page_num in rek.iter_pages() %}
+    {% if page_num %}
+    {% if rek.page == page_num %}
+    <a href="{{url_for('admingam.lamanrek', page=page_num)}}" class="btn btn-info btn-sm mt-3">{{page_num}}</a>
+    {% else %}
+    <a href="{{url_for('admingam.lamanrek', page=page_num)}}" class="btn btn-outline-info btn-sm mt-3">{{page_num}}</a>
+    {% endif %}
+    {% else %}
+    ... 
+    {% endif %}
+    {% endfor %}
+
+    {% if rek.has_next %}
+    <a href="{{url_for('admingam.lamanrek', page=rek.next_num)}}" class="btn btn-info btn-sm mt-3">next</a>
+    {% endif %}
+  </div>
+</div>
 {% endblock content  %}

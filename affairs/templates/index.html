@@ -7,7 +7,7 @@
         <div class="card-body">
           <h5 class="card-title">{{df.judul}}</h5>
           <hr>
-          <p class="card-text">{{df.konten | truncate(200) | striptags()}}</p>
+          <p class="card-text">{{df.konten | truncate(200) | striptags}}</p>
           <a href="{{url_for('admingam.baca_ar', id=df.id)}}" class="btn btn-secondary btn-sm">baca selengkapnya</a>
         </div>
         <p class="text-muted ml-5">{{df.tgl_post.strftime('%B %d, %Y')}}</p>

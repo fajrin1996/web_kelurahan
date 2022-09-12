@@ -181,7 +181,8 @@ def displaycsv():
     
 @admingam.route('/lamanrek')
 def lamanrek():
-    rek = CustomerPgAir.query.order_by(CustomerPgAir.id.desc()).all()
+    halaman = request.args.get('page',1, type=int)
+    rek = CustomerPgAir.query.order_by(CustomerPgAir.id.desc()).paginate(page=halaman, per_page=10)
     return render_template('lamanrek.html', rek=rek,title='Daftar Rekening Bulanan')
             
 # @admingam.route('/hapusrek/<int:id>')
