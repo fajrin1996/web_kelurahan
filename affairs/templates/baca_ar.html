@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h2 style="text-align: center;">{{bca.judul}}</h2>
-    <h4>{{bca.ar.nama | safe }}</h4>
-    <p>{{bca.konten | safe |  striptags}}</p>
+    <h4>{{bca.ar.nama}}</h4>
+    <p>{{bca.konten | striptags}}</p>
 </div>
 {% endblock content %}
