@@ -38,5 +38,5 @@ class editArtikel(FlaskForm):
 class UploadCSv(FlaskForm):
     csvField = FileField('CSV', validators=[DataRequired(), FileAllowed(['csv'])])
    # catatan  = TextAreaField("Catatan", validators=[DataRequired()])
-    submit = SubmitField("Sv Fl")
+    submit = SubmitField("Upload")
     
